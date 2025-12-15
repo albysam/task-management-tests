@@ -7,5 +7,26 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "testTimeout": 30000,
-  "maxWorkers": 1
+  "maxWorkers": 1,
+  "globalSetup": "<rootDir>/setup/global-setup.ts",
+  "globalTeardown": "<rootDir>/setup/global-teardown.ts",
+  "moduleNameMapper": {
+    "^@test/(.*)$": "<rootDir>/$1",
+    "^@helpers$": "<rootDir>/helpers/index.ts",
+    "^@factories$": "<rootDir>/factories/index.ts",
+    "^@fixtures$": "<rootDir>/fixtures/index.ts",
+    "^@setup/(.*)$": "<rootDir>/setup/$1"
+  },
+  "collectCoverageFrom": [
+    "../src/**/*.ts",
+    "!../src/**/*.module.ts",
+    "!../src/main.ts",
+    "!../src/migrations/**"
+  ],
+  "coverageDirectory": "../coverage/e2e",
+  "verbose": true,
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/dist/"
+  ]
 }
